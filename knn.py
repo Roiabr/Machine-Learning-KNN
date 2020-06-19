@@ -30,12 +30,6 @@ and one vector of labels (gender)
 """
 
 
-def splitToFeaturesLabels(data):
-    X = np.array(data[:, 0:2])
-    Y = np.array(data[:, -1])
-    return X, Y
-
-
 def UpdateNeighbors(neighbors, point, distance, k):
     if k > len(neighbors):
         neighbors.append([distance, point])
@@ -47,40 +41,51 @@ def UpdateNeighbors(neighbors, point, distance, k):
     return neighbors
 
 
-def knn(train, test, p, k):
+def knn(train, point, p, k):
     error = 0.0
-    if p == 3:
-        p = np.inf
     neighbors = []
     man = 0
     woman = 0
-    for pointTest in test:
-        for pointTrain in train:
-            dis = distance.minkowski(pointTrain[0:2], pointTest[0:2], p)
-            # print(dis)
-            neighbors = UpdateNeighbors(neighbors, pointTrain, dis, k)
-            print(neighbors)
-    #     for i in range(k):
-    #         if neighbors[i][1][2] == 2.0:
-    #             woman += 1
-    #         else:
-    #             man += 1
-    #     # print(man, woman)
-    #     if (woman > man and pointTest[2] == 1) or man > woman and pointTest[2] == 2:
-    #         error += 1
-    # return error
+
+    for pointTrain in train:
+        if pointTrain[0] == point[0]:
+            continue
+        dis = distance.minkowski(pointTrain[0:2], point[0:2], p)
+        neighbors = UpdateNeighbors(neighbors, pointTrain, dis, k)
+
+    for i in range(k):
+        if neighbors[i][1][2] == 2.0:
+            woman += 1
+        else:
+            man += 1
+    if woman > man:
+        return 2
+
+    return 1
 
 
 def knnExperiment(data):
-    error = 0.0
-    for p in range(1, 4):
-        print("# P = ", p)
+    errorTest = 0.0
+    errorTrain = 0.0
+    for p in [1, 2, np.inf]:
+        print("P = ", p)
         for k in range(1, 10, 2):
-            for i in range(500):
+            for i in range(1):
                 train, test = splitTestTrain(data)
-                error = knn(train, test, p, k)
-            #print((error / 500) / 65)
+                for pointTest in test:
+                    guess = knn(train, pointTest, p, k)
+                    if guess != pointTest[2]:
+                        errorTest += 1
+                for pointTrain in train:
+                    guess = knn(train, pointTrain, p, k)
+                    if guess != pointTrain[2]:
+                        errorTrain += 1
 
+            print("Test: for k:", k, "the Error is: ", (errorTest / 1) / 65)
+            print("Train: for k:", k, "the Error is: ", (errorTrain / 1) / 65)
+            print("------------------------------------------------------------")
+            errorTest = 0.0
+            errorTrain = 0.0
 
 if __name__ == '__main__':
     # initiailize data set
