@@ -13,6 +13,32 @@ def read_data(path):
     return data
 
 
+def splitToFeaturesLabels(data):
+    X = np.array(data[:, 0:2])
+    Y = np.array(data[:, -1])
+    return X, Y
+
+
+def draw(trainFeatures, trainLabels):
+    fig, ax = plt.subplots()
+    fig = plt.gcf()
+    ax = fig.gca()
+
+    # Draw points:
+    for i in range(trainFeatures.shape[0]):
+        if trainLabels[i] == 1:  # Positive points:
+            plt.scatter(trainFeatures[i, 0], trainFeatures[i, 1], color="green", s=30)
+        else:  # Negative points:
+            plt.scatter(trainFeatures[i, 0], trainFeatures[i, 1], color="blue", s=30)
+        ax.grid()
+
+    # Add legend to colors:
+    green_patch = patches.Patch(color='green', label='Positive points (male)')
+    blue_patch = patches.Patch(color='blue', label='Negative points (female)')
+    plt.legend(handles=[green_patch, blue_patch])
+    plt.show()
+
+
 """
 In the experiment we randomly divide the data-points for each iteration 
 into 65 training points and 65 test points
@@ -88,29 +114,15 @@ def knnExperiment(data):
             errorTest = 0.0
             errorTrain = 0.0
 
+
 if __name__ == '__main__':
     # initiailize data set
     path = 'C:/Users/Roi Abramovitch/Downloads/לימודים מדעי המחשב/שנה ג/למידת מכונה/מטלות/מטלה 3/HC_Body_Temperature'
     data = read_data(path)
+    X, Y = splitToFeaturesLabels(data)
+    draw(X, Y)
     knnExperiment(data)
 
 
 
-def draw(modelType, trainFeatures, trainLabels, model):
-    fig, ax = plt.subplots()
-    fig = plt.gcf()
-    ax = fig.gca()
 
-    # Draw points:
-    for i in range(trainFeatures.shape[0]):
-        if trainLabels[i] == 1:  # Positive points:
-            plt.scatter(trainFeatures[i, 0], trainFeatures[i, 1], color="green", s=30)
-        else:  # Negative points:
-            plt.scatter(trainFeatures[i, 0], trainFeatures[i, 1], color="blue", s=30)
-        ax.grid()
-
-    # Add legend to colors:
-    green_patch = patches.Patch(color='green', label='Positive points (male)')
-    blue_patch = patches.Patch(color='blue', label='Negative points (female)')
-    plt.legend(handles=[green_patch, blue_patch])
-    plt.show()
