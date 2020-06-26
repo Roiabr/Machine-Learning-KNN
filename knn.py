@@ -76,7 +76,6 @@ def knn(train, point, p, k):
     woman = 0
 
     for pointTrain in train:
-
         dis = distance.minkowski(pointTrain[0:2], point[0:2], p)
         neighbors = UpdateNeighbors(neighbors, pointTrain, dis, k)
 
@@ -94,25 +93,37 @@ def knn(train, point, p, k):
 def knnExperiment(data):
     errorTest = 0.0
     errorTrain = 0.0
+    bestK = ""
+    bestP = ""
+    bestError = np.inf
     for p in [1, 2, np.inf]:
         print("P = ", p)
+        print("--------")
         for k in range(1, 10, 2):
-            for i in range(500):
+            errorTest = 0.0
+            errorTrain = 0.0
+            for i in range(10):
                 train, test = splitTestTrain(data)
                 for pointTest in test:
                     guess = knn(train, pointTest, p, k)
                     if guess != pointTest[2]:
                         errorTest += 1
+
                 for pointTrain in train:
                     guess = knn(train, pointTrain, p, k)
                     if guess != pointTrain[2]:
                         errorTrain += 1
 
-            print("Test: for k:", k, "the Error is: ", (errorTest / 500) / 65)
-            print("Train: for k:", k, "the Error is: ", (errorTrain / 500) / 65)
+            if errorTest < bestError:
+                bestK = k
+                bestP = p
+                bestError = errorTest
+
+            print("Test: for k:", k, "the Error is: ", (errorTest / 10) / 65)
+            print("Train: for k:", k, "the Error is: ", (errorTrain / 10) / 65)
             print("------------------------------------------------------------")
-            errorTest = 0.0
-            errorTrain = 0.0
+
+    print("Best result only about test: error =", (bestError / 10) / 65, "% , p = ", bestP, ", k = ", bestK)
 
 
 if __name__ == '__main__':
@@ -122,7 +133,3 @@ if __name__ == '__main__':
     X, Y = splitToFeaturesLabels(data)
     draw(X, Y)
     knnExperiment(data)
-
-
-
-
