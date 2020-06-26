@@ -102,7 +102,7 @@ def knnExperiment(data):
         for k in range(1, 10, 2):
             errorTest = 0.0
             errorTrain = 0.0
-            for i in range(10):
+            for i in range(500):
                 train, test = splitTestTrain(data)
                 for pointTest in test:
                     guess = knn(train, pointTest, p, k)
@@ -119,11 +119,11 @@ def knnExperiment(data):
                 bestP = p
                 bestError = errorTest
 
-            print("Test: for k:", k, "the Error is: ", (errorTest / 10) / 65)
-            print("Train: for k:", k, "the Error is: ", (errorTrain / 10) / 65)
+            print("Test: for k:", k, "the Error is: ", (errorTest / 500) / 65)
+            print("Train: for k:", k, "the Error is: ", (errorTrain / 500) / 65)
             print("------------------------------------------------------------")
 
-    print("Best result only about test: error =", (bestError / 10) / 65, "% , p = ", bestP, ", k = ", bestK)
+    print("Best result only about test: error =", (bestError / 500) / 65, "% , p = ", bestP, ", k = ", bestK)
 
 
 if __name__ == '__main__':
