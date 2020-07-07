@@ -128,7 +128,7 @@ def knnExperiment(data):
 
 if __name__ == '__main__':
     # initiailize data set
-    path = 'C:/Users/Roi Abramovitch/Downloads/לימודים מדעי המחשב/שנה ג/למידת מכונה/מטלות/מטלה 3/HC_Body_Temperature'
+    path = 'C:/Users/HC_Body_Temperature'
     data = read_data(path)
     X, Y = splitToFeaturesLabels(data)
     draw(X, Y)
