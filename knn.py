@@ -90,19 +90,22 @@ def knn(train, point, p, k):
     return 1
 
 
-def knnExperiment(data):
+def knnExperiment(data, ):
     errorTest = 0.0
     errorTrain = 0.0
     bestK = ""
     bestP = ""
+    bestK2 = ""
+    bestP2 = ""
     bestError = np.inf
+    bestError2 = np.inf
     for p in [1, 2, np.inf]:
         print("P = ", p)
         print("--------")
         for k in range(1, 10, 2):
             errorTest = 0.0
             errorTrain = 0.0
-            for i in range(500):
+            for i in range(100):
                 train, test = splitTestTrain(data)
                 for pointTest in test:
                     guess = knn(train, pointTest, p, k)
@@ -119,16 +122,22 @@ def knnExperiment(data):
                 bestP = p
                 bestError = errorTest
 
-            print("Test: for k:", k, "the Error is: ", (errorTest / 500) / 65)
-            print("Train: for k:", k, "the Error is: ", (errorTrain / 500) / 65)
+            if errorTrain < bestError2:
+                bestK2 = k
+                bestP2 = p
+                bestError2 = errorTrain
+
+            print("Test: for k:", k, "the Error is: ", (errorTest / 100) / 65)
+            print("Train: for k:", k, "the Error is: ", (errorTrain / 100) / 65)
             print("------------------------------------------------------------")
 
-    print("Best result only about test: error =", (bestError / 500) / 65, "% , p = ", bestP, ", k = ", bestK)
+    print("Best result for test: error =", (bestError / 100) / 65, "% , p = ", bestP, ", k = ", bestK)
+    print("Best result for train: error =", (bestError2 / 100) / 65, "% , p = ", bestP2, ", k = ", bestK2)
 
 
 if __name__ == '__main__':
     # initiailize data set
-    path = 'C:/Users/HC_Body_Temperature'
+    path = 'C:/Users/Roi Abramovitch/Downloads/לימודים מדעי המחשב/שנה ג/למידת מכונה/מטלות/מטלה 3/HC_Body_Temperature'
     data = read_data(path)
     X, Y = splitToFeaturesLabels(data)
     draw(X, Y)

@@ -1,52 +1,53 @@
 P =  1
 --------
-Test: for k: 1 the Error is:  0.4575692307692308
-Train: for k: 1 the Error is:  0.028246153846153848
+Test: for k: 1 the Error is:  0.46476923076923077
+Train: for k: 1 the Error is:  0.028923076923076923
 ------------------------------------------------------------
-Test: for k: 3 the Error is:  0.4358461538461538
-Train: for k: 3 the Error is:  0.22772307692307692
+Test: for k: 3 the Error is:  0.4333846153846154
+Train: for k: 3 the Error is:  0.22738461538461538
 ------------------------------------------------------------
-Test: for k: 5 the Error is:  0.44855384615384614
-Train: for k: 5 the Error is:  0.2819384615384615
+Test: for k: 5 the Error is:  0.456
+Train: for k: 5 the Error is:  0.28015384615384614
 ------------------------------------------------------------
-Test: for k: 7 the Error is:  0.46196923076923074
-Train: for k: 7 the Error is:  0.3144
+Test: for k: 7 the Error is:  0.4709230769230769
+Train: for k: 7 the Error is:  0.31123076923076926
 ------------------------------------------------------------
-Test: for k: 9 the Error is:  0.46547692307692307
-Train: for k: 9 the Error is:  0.3344307692307692
+Test: for k: 9 the Error is:  0.4706153846153846
+Train: for k: 9 the Error is:  0.3358461538461538
 ------------------------------------------------------------
 P =  2
 --------
-Test: for k: 1 the Error is:  0.46233846153846153
-Train: for k: 1 the Error is:  0.028615384615384615
+Test: for k: 1 the Error is:  0.4544615384615385
+Train: for k: 1 the Error is:  0.032
 ------------------------------------------------------------
-Test: for k: 3 the Error is:  0.43916923076923076
-Train: for k: 3 the Error is:  0.23089230769230767
+Test: for k: 3 the Error is:  0.4490769230769231
+Train: for k: 3 the Error is:  0.22446153846153846
 ------------------------------------------------------------
-Test: for k: 5 the Error is:  0.4536307692307692
-Train: for k: 5 the Error is:  0.28347692307692307
+Test: for k: 5 the Error is:  0.45384615384615384
+Train: for k: 5 the Error is:  0.27538461538461534
 ------------------------------------------------------------
-Test: for k: 7 the Error is:  0.4678769230769231
-Train: for k: 7 the Error is:  0.3136
+Test: for k: 7 the Error is:  0.46076923076923076
+Train: for k: 7 the Error is:  0.31
 ------------------------------------------------------------
-Test: for k: 9 the Error is:  0.47489230769230767
-Train: for k: 9 the Error is:  0.3419076923076923
+Test: for k: 9 the Error is:  0.4693846153846154
+Train: for k: 9 the Error is:  0.3356923076923077
 ------------------------------------------------------------
 P =  inf
 --------
-Test: for k: 1 the Error is:  0.4530461538461539
-Train: for k: 1 the Error is:  0.029015384615384613
+Test: for k: 1 the Error is:  0.448
+Train: for k: 1 the Error is:  0.02969230769230769
 ------------------------------------------------------------
-Test: for k: 3 the Error is:  0.44836923076923074
-Train: for k: 3 the Error is:  0.23144615384615386
+Test: for k: 3 the Error is:  0.4495384615384615
+Train: for k: 3 the Error is:  0.22923076923076924
 ------------------------------------------------------------
-Test: for k: 5 the Error is:  0.46206153846153847
-Train: for k: 5 the Error is:  0.2839076923076923
+Test: for k: 5 the Error is:  0.4643076923076923
+Train: for k: 5 the Error is:  0.2926153846153846
 ------------------------------------------------------------
-Test: for k: 7 the Error is:  0.46790769230769236
-Train: for k: 7 the Error is:  0.3196
+Test: for k: 7 the Error is:  0.4552307692307692
+Train: for k: 7 the Error is:  0.32061538461538464
 ------------------------------------------------------------
-Test: for k: 9 the Error is:  0.47286153846153844
-Train: for k: 9 the Error is:  0.34295384615384616
+Test: for k: 9 the Error is:  0.47323076923076923
+Train: for k: 9 the Error is:  0.34215384615384614
 ------------------------------------------------------------
-Best result only about test: error = 0.4358461538461538 % , p =  1 , k =  3
+Best result for test: error = 0.4333846153846154 % , p =  1 , k =  3
+Best result for train: error = 0.028923076923076923 % , p =  1 , k =  1
